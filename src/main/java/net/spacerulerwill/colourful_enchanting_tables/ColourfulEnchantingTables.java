@@ -9,11 +9,14 @@ import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroupEntries;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
+import net.fabricmc.loader.api.FabricLoader;
+import net.fabricmc.loader.api.MappingResolver;
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.EnchantingTableBlock;
 import net.minecraft.block.entity.BlockEntityType;
+import net.minecraft.block.entity.EnchantingTableBlockEntity;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemFrameItem;
@@ -24,6 +27,9 @@ import net.minecraft.util.Identifier;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.lang.invoke.MethodHandle;
+import java.lang.invoke.MethodHandles;
+import java.lang.invoke.MethodType;
 import java.lang.reflect.Field;
 import java.util.Set;
 
@@ -81,13 +87,23 @@ public class ColourfulEnchantingTables implements ModInitializer {
 		LOGGER.info("Colourful Enchanting Tables is initialised!");
 	}
 
-	// Used to add our custom blocks to the EnchantingTableBlockEntity
 	private void editEnchantingTableBlockEntity() {
+		MappingResolver resolver = FabricLoader.getInstance().getMappingResolver();
 		try {
-			Field enchantingTableField = BlockEntityType.class.getDeclaredField("ENCHANTING_TABLE");
+			Field enchantingTableField = BlockEntityType.class.getDeclaredField(resolver.mapFieldName(
+					"intermediary",
+					resolver.unmapClassName("intermediary", BlockEntityType.class.getName()),
+					"field_11912",
+					"Lnet/minecraft/class_2591;"
+			));
 			enchantingTableField.setAccessible(true);
 			BlockEntityType<?> enchantingTableType = (BlockEntityType<?>) enchantingTableField.get(null);
-			Field blocksField = BlockEntityType.class.getDeclaredField("blocks");
+			Field blocksField = BlockEntityType.class.getDeclaredField(resolver.mapFieldName(
+					"intermediary",
+					resolver.unmapClassName("intermediary", BlockEntityType.class.getName()),
+					"field_19315",
+					"Ljava/util/Set;"
+			));
 			blocksField.setAccessible(true);
 			Set<Block> currentBlocks = (Set<Block>) blocksField.get(enchantingTableType);
 			Set<Block> newBlocks = ImmutableSet.<Block>builder()
@@ -108,9 +124,14 @@ public class ColourfulEnchantingTables implements ModInitializer {
 					.add(MAGENTA_ENCHANTING_TABLE)
 					.add(PINK_ENCHANTING_TABLE)
 					.build();
+
 			blocksField.set(enchantingTableType, newBlocks);
+
+		} catch (NoSuchFieldException | IllegalAccessException e) {
+			e.printStackTrace();
 		} catch (Exception e) {
-			LOGGER.error("Failed to insert enchanting tables into EnchantingTableBlockEntity: ", e);
+			e.printStackTrace();
 		}
 	}
+
 }
