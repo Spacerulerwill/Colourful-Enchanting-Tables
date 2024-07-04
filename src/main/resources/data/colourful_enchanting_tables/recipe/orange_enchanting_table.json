@@ -1,0 +1,28 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "enchanting_tables",
+  "key": {
+    "#": {
+      "item": "minecraft:obsidian"
+    },
+    "B": {
+      "item": "minecraft:book"
+    },
+    "D": {
+      "item": "minecraft:diamond"
+    },
+    "C": {
+      "item": "minecraft:orange_carpet"
+    }
+  },
+  "pattern": [
+    "CBC",
+    "D#D",
+    "###"
+  ],
+  "result": {
+    "count": 1,
+    "id": "colourful_enchanting_tables:orange_enchanting_table"
+  }
+}

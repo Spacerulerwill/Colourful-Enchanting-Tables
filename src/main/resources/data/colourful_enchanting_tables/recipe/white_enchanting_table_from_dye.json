@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "enchanting_tables",
+  "ingredients": [
+    {
+      "tag": "colourful_enchanting_tables:enchanting_tables"
+    },
+    {
+      "item": "minecraft:white_dye"
+    }
+  ],
+  "result": {
+    "id": "colourful_enchanting_tables:white_enchanting_table",
+    "count": 1
+  }
+}

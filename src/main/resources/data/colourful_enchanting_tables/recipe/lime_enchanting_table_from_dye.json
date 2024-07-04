@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "enchanting_tables",
+  "ingredients": [
+    {
+      "tag": "colourful_enchanting_tables:enchanting_tables"
+    },
+    {
+      "item": "minecraft:lime_dye"
+    }
+  ],
+  "result": {
+    "id": "colourful_enchanting_tables:lime_enchanting_table",
+    "count": 1
+  }
+}
