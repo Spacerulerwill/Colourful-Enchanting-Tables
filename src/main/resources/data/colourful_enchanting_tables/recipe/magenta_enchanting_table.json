@@ -17,8 +17,8 @@
     }
   },
   "pattern": [
-    "CBC",
-    "D#D",
+    "DBD",
+    "C#C",
     "###"
   ],
   "result": {
