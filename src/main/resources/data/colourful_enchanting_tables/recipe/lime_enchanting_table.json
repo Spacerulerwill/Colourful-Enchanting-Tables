@@ -3,18 +3,10 @@
   "category": "misc",
   "group": "enchanting_tables",
   "key": {
-    "#": {
-      "item": "minecraft:obsidian"
-    },
-    "B": {
-      "item": "minecraft:book"
-    },
-    "D": {
-      "item": "minecraft:diamond"
-    },
-    "C": {
-      "item": "minecraft:lime_carpet"
-    }
+    "#": "minecraft:obsidian",
+    "B": "minecraft:book",
+    "D": "minecraft:diamond",
+    "C": "minecraft:lime_carpet"
   },
   "pattern": [
     "DBD",

@@ -1,0 +1,30 @@
+{
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "bonus_rolls": 0,
+      "conditions": [
+        {
+          "condition": "minecraft:survives_explosion"
+        }
+      ],
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "functions": [
+            {
+              "function": "minecraft:copy_components",
+              "include": [
+                "minecraft:custom_name"
+              ],
+              "source": "block_entity"
+            }
+          ],
+          "name": "colourful_enchanting_tables:orange_enchanting_table"
+        }
+      ],
+      "rolls": 1
+    }
+  ],
+  "random_sequence": "colourful_enchanting_tables:blocks/orange_enchanting_table"
+}

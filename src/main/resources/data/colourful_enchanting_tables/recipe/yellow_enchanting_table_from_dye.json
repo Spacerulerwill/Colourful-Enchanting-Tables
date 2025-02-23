@@ -3,12 +3,8 @@
   "category": "misc",
   "group": "enchanting_tables",
   "ingredients": [
-    {
-      "tag": "colourful_enchanting_tables:enchanting_tables"
-    },
-    {
-      "item": "minecraft:yellow_dye"
-    }
+    "#colourful_enchanting_tables:enchanting_tables",
+    "minecraft:yellow_dye"
   ],
   "result": {
     "id": "colourful_enchanting_tables:yellow_enchanting_table",

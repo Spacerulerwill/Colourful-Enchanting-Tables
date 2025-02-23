@@ -1,7 +1,7 @@
 {
 	"schemaVersion": 1,
 	"id": "colourful_enchanting_tables",
-	"version": "${1.0}",
+	"version": "1.0.1",
 	"name": "Colourful Enchanting Tables",
 	"description": "A simple mod that adds coloured enchanting table variations for all the Minecraft primary colours",
 	"authors": [

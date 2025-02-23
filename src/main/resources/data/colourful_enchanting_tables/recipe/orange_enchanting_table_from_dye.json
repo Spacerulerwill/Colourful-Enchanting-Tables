@@ -3,12 +3,8 @@
   "category": "misc",
   "group": "enchanting_tables",
   "ingredients": [
-    {
-      "tag": "colourful_enchanting_tables:enchanting_tables"
-    },
-    {
-      "item": "minecraft:orange_dye"
-    }
+    "#colourful_enchanting_tables:enchanting_tables",
+    "minecraft:orange_dye"
   ],
   "result": {
     "id": "colourful_enchanting_tables:orange_enchanting_table",
