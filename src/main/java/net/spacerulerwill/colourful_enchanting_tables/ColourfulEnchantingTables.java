@@ -27,21 +27,21 @@ public class ColourfulEnchantingTables implements ModInitializer {
 	public static final String MOD_ID = "colourful_enchanting_tables";
     public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
 
-	public static final Block WHITE_ENCHANTING_TABLE = registerEnchantingTable("white_enchanting_table");
-	public static final Block LIGHT_GRAY_ENCHANTING_TABLE = registerEnchantingTable("light_gray_enchanting_table");
-	public static final Block GRAY_ENCHANTING_TABLE = registerEnchantingTable("gray_enchanting_table");
-	public static final Block BLACK_ENCHANTING_TABLE = registerEnchantingTable("black_enchanting_table");
-	public static final Block BROWN_ENCHANTING_TABLE = registerEnchantingTable("brown_enchanting_table");
-	public static final Block ORANGE_ENCHANTING_TABLE = registerEnchantingTable("orange_enchanting_table");
-	public static final Block YELLOW_ENCHANTING_TABLE = registerEnchantingTable("yellow_enchanting_table");
-	public static final Block LIME_ENCHANTING_TABLE = registerEnchantingTable("lime_enchanting_table");
-	public static final Block GREEN_ENCHANTING_TABLE = registerEnchantingTable("green_enchanting_table");
-	public static final Block CYAN_ENCHANTING_TABLE = registerEnchantingTable("cyan_enchanting_table");
-	public static final Block LIGHT_BLUE_ENCHANTING_TABLE = registerEnchantingTable("light_blue_enchanting_table");
-	public static final Block BLUE_ENCHANTING_TABLE = registerEnchantingTable("blue_enchanting_table");
-	public static final Block PURPLE_ENCHANTING_TABLE = registerEnchantingTable("purple_enchanting_table");
-	public static final Block MAGENTA_ENCHANTING_TABLE = registerEnchantingTable("magenta_enchanting_table");
-	public static final Block PINK_ENCHANTING_TABLE = registerEnchantingTable("pink_enchanting_table");
+	public static final Block WHITE_ENCHANTING_TABLE = registerEnchantingTable("white_enchanting_table", MapColor.WHITE);
+	public static final Block LIGHT_GRAY_ENCHANTING_TABLE = registerEnchantingTable("light_gray_enchanting_table", MapColor.LIGHT_GRAY);
+	public static final Block GRAY_ENCHANTING_TABLE = registerEnchantingTable("gray_enchanting_table", MapColor.GRAY);
+	public static final Block BLACK_ENCHANTING_TABLE = registerEnchantingTable("black_enchanting_table", MapColor.BLACK);
+	public static final Block BROWN_ENCHANTING_TABLE = registerEnchantingTable("brown_enchanting_table", MapColor.BROWN);
+	public static final Block ORANGE_ENCHANTING_TABLE = registerEnchantingTable("orange_enchanting_table", MapColor.ORANGE);
+	public static final Block YELLOW_ENCHANTING_TABLE = registerEnchantingTable("yellow_enchanting_table", MapColor.YELLOW);
+	public static final Block LIME_ENCHANTING_TABLE = registerEnchantingTable("lime_enchanting_table", MapColor.LIME);
+	public static final Block GREEN_ENCHANTING_TABLE = registerEnchantingTable("green_enchanting_table", MapColor.GREEN);
+	public static final Block CYAN_ENCHANTING_TABLE = registerEnchantingTable("cyan_enchanting_table", MapColor.CYAN);
+	public static final Block LIGHT_BLUE_ENCHANTING_TABLE = registerEnchantingTable("light_blue_enchanting_table", MapColor.LIGHT_BLUE);
+	public static final Block BLUE_ENCHANTING_TABLE = registerEnchantingTable("blue_enchanting_table", MapColor.BLUE);
+	public static final Block PURPLE_ENCHANTING_TABLE = registerEnchantingTable("purple_enchanting_table", MapColor.PURPLE);
+	public static final Block MAGENTA_ENCHANTING_TABLE = registerEnchantingTable("magenta_enchanting_table", MapColor.MAGENTA);
+	public static final Block PINK_ENCHANTING_TABLE = registerEnchantingTable("pink_enchanting_table", MapColor.PINK);
 
 	private static Item registerBlockItem(String name, Block block) {
 		// Register the block item with the registry key
@@ -51,10 +51,10 @@ public class ColourfulEnchantingTables implements ModInitializer {
 		return Registry.register(Registries.ITEM, key, new BlockItem(block, settings));
 	}
 
-	private static Block registerEnchantingTable(String name) {
+	private static Block registerEnchantingTable(String name, MapColor mapColor) {
 		Identifier id = Identifier.of(MOD_ID, name);
 		RegistryKey<Block> key = RegistryKey.of(RegistryKeys.BLOCK, id);
-		AbstractBlock.Settings settings = AbstractBlock.Settings.copy(Blocks.ENCHANTING_TABLE).registryKey(key);
+		AbstractBlock.Settings settings = AbstractBlock.Settings.copy(Blocks.ENCHANTING_TABLE).registryKey(key).mapColor(mapColor);
 		Block block = new EnchantingTableBlock(settings);
 		registerBlockItem(name, block);
 		return Registry.register(Registries.BLOCK, key, block);
