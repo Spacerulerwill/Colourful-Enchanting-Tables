@@ -15,5 +15,7 @@
   "block.colourful_enchanting_tables.purple_enchanting_table": "Purple Enchanting Table",
   "block.colourful_enchanting_tables.magenta_enchanting_table": "Magenta Enchanting Table",
   "block.colourful_enchanting_tables.pink_enchanting_table": "Pink Enchanting Table",
-  "tag.item.colourful_enchanting_tables.enchanting_tables": "Enchanting Tables"
+  "tag.item.colourful_enchanting_tables.enchanting_tables": "Enchanting Tables",
+  "advancements.story.obtain_all_enchanting_tables.title": "Rainbow Tables",
+  "advancements.story.obtain_all_enchanting_tables.description": "Obtain an enchanting table for every colour of the rainbow"
 }
