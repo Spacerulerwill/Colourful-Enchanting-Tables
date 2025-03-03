@@ -17,3 +17,7 @@ A simple 1.21 mod that adds coloured variations of the enchanting table for all 
   <img src="images/recipe_slideshow_1.gif" width="45%" />
   <img src="images/recipe_slideshow_2.gif" width="45%" />
 </p>
+
+# Advancements
+
+<img src="images/rainbow_tables.png" width="90%" />
