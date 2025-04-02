@@ -1,5 +1,5 @@
-# Colourful Enchanting Tables
-A simple 1.21 fabric mod that adds coloured variations of the enchanting table for all of Minecraft's 16 primary colours
+# Colourful Enchanting Tables (Fabric 1.21.0)
+A 1.21 mod that adds coloured variations of the enchanting table for all of Minecraft's 16 primary colours
 # Images
 <p>
   <img src="images/showcase_1.png" width="45%" />
