@@ -1,7 +1,5 @@
 # Colourful Enchanting Tables (Fabric 1.21.1)
 A  mod that adds coloured variations of the enchanting table for all of Minecraft's 16 primary colours.
-# Links
-* [Modrinth (Fabric)](https://modrinth.com/mod/colourful-enchanting-tables)
 # Images
 <p>
   <img src="images/showcase_1.png" width="45%" />
