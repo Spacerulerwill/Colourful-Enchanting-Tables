@@ -1,3 +1,6 @@
+# 1.1.1-1.21.4 - 06/04/25
+* Fixed bug where you could dye an enchanting table to the same colour
+* Fixed recipe advancements for the enchanting tables
 # 1.1.1-1.21.4 - 28/03/25
 * Remove erroneous tag causing log errors on game startup.
 # 1.1.0-1.21.4 - 01/03/25
