@@ -1,0 +1,46 @@
+{
+    "parent": "minecraft:recipes/root",
+    "criteria": {
+        "has_white_enchanting_table_recipe": {
+            "conditions": {
+                "recipe": "colourful_enchanting_tables:white_enchanting_table"
+            },
+            "trigger": "minecraft:recipe_unlocked"
+        },
+        "has_the_recipe": {
+            "conditions": {
+                "recipe": "colourful_enchanting_tables:red_enchanting_table"
+            },
+            "trigger": "minecraft:recipe_unlocked"
+        },
+        "has_item": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "items": [
+                            "minecraft:red_dye",
+                            "minecraft:red_wool",
+                            "minecraft:red_carpet"
+                        ]
+                    }
+                ]
+            }
+        }
+    },
+    "requirements": [
+        [
+            "has_the_recipe",
+            "has_white_enchanting_table_recipe"
+        ],
+        [
+            "has_the_recipe",
+            "has_item"
+        ]
+    ],
+    "rewards": {
+        "recipes": [
+            "colourful_enchanting_tables:red_enchanting_table"
+        ]
+    }
+}
