@@ -86,7 +86,7 @@ def get_enchanting_table_recipe_advancement(colour: str) -> str:
                 ["has_the_recipe", "has_item"],
             ],
             "rewards": {
-                "recipes": [f"colourful_enchanting_tables:{colour}_enchanting_table"]
+                "recipes": [get_name_from_colour(colour)]
             },
         },
         indent=4,
