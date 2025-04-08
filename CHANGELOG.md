@@ -1,3 +1,5 @@
+# 1.1.4-1.21.5 - 08/04/25
+* Fixed bug where red enchanting table recipe advancement was unobtainable.
 # 1.1.3-1.21.5 - 08/04/25
 * Added homepage and issue tracker to mod metadata
 # 1.1.2-1.21.5 - 06/04/25

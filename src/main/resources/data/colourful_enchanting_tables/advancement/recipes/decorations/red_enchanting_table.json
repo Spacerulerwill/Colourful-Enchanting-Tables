@@ -40,7 +40,7 @@
     ],
     "rewards": {
         "recipes": [
-            "colourful_enchanting_tables:red_enchanting_table"
+            "minecraft:enchanting_table"
         ]
     }
 }
