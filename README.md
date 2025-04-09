@@ -1,4 +1,4 @@
-# Colourful Enchanting Tables (Fabric 1.21.5) ![Modrinth Downloads](https://img.shields.io/modrinth/dt/RqAtcD1y) ![Modrinth Followers](https://img.shields.io/modrinth/followers/RqAtcD1y)
+# Colourful Enchanting Tables (Fabric 1.21.3) ![Modrinth Downloads](https://img.shields.io/modrinth/dt/RqAtcD1y) ![Modrinth Followers](https://img.shields.io/modrinth/followers/RqAtcD1y)
 A simple mod that adds coloured variations of the enchanting table for all of Minecraft's 16 primary colours.
 # Images
 <p>
