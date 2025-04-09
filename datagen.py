@@ -72,7 +72,6 @@ def get_enchanting_table_recipe_advancement(colour: str) -> str:
                         "items": [
                             {
                                 "items": [
-                                    f"minecraft:{colour}_dye",
                                     f"minecraft:{colour}_wool",
                                     f"minecraft:{colour}_carpet",
                                 ]
@@ -85,8 +84,33 @@ def get_enchanting_table_recipe_advancement(colour: str) -> str:
                 ["has_the_recipe", "has_white_enchanting_table_recipe"],
                 ["has_the_recipe", "has_item"],
             ],
+            "rewards": {"recipes": [get_name_from_colour(colour)]},
+        },
+        indent=4,
+    )
+
+
+def get_enchanting_table_dye_recipe_advancement(colour: str) -> str:
+    return json.dumps(
+        {
+            "parent": "minecraft:recipes/root",
+            "criteria": {
+                "has_needed_dye": {
+                    "conditions": {"items": [{"items": f"minecraft:{colour}_dye"}]},
+                    "trigger": "minecraft:inventory_changed",
+                },
+                "has_the_recipe": {
+                    "conditions": {
+                        "recipe": f"colourful_enchanting_tables:{colour}_enchanting_table_from_dye"
+                    },
+                    "trigger": "minecraft:recipe_unlocked",
+                },
+            },
+            "requirements": [["has_the_recipe", "has_needed_dye"]],
             "rewards": {
-                "recipes": [get_name_from_colour(colour)]
+                "recipes": [
+                    f"colourful_enchanting_tables:{colour}_enchanting_table_from_dye"
+                ]
             },
         },
         indent=4,
@@ -132,7 +156,7 @@ def get_dye_recipe_string(colour: str) -> str:
         {
             "type": "minecraft:crafting_shapeless",
             "category": "misc",
-            "group": "enchanting_tables",
+            "group": "enchanting_tables_from_dye",
             "ingredients": [ingredients, f"minecraft:{colour}_dye"],
             "result": {"count": 1, "id": this_table},
         },
@@ -215,6 +239,15 @@ def create_enchanting_table_recipe_advancements() -> None:
             f.write(get_enchanting_table_recipe_advancement(colour))
 
 
+def create_enchanting_table_dye_recipe_advancements() -> None:
+    for colour in ALL_TABLE_COLOURS:
+        with open(
+            f"data/{MOD_ID}/advancement/recipes/decorations/{colour}_enchanting_table_from_dye.json",
+            "w+",
+        ) as f:
+            f.write(get_enchanting_table_dye_recipe_advancement(colour))
+
+
 def create_block_loot_tables() -> None:
     colours = ALL_TABLE_COLOURS.copy()
     colours.remove("red")
@@ -277,6 +310,7 @@ def main() -> None:
     create_dye_recipes()
     replace_enchanting_table_recipe_advancement()
     create_enchanting_table_recipe_advancements()
+    create_enchanting_table_dye_recipe_advancements()
     create_block_loot_tables()
     create_pickaxe_mineable_json()
     create_rainbow_tables_advancement()

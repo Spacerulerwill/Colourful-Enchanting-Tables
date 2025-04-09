@@ -1,0 +1,32 @@
+{
+    "parent": "minecraft:recipes/root",
+    "criteria": {
+        "has_needed_dye": {
+            "conditions": {
+                "items": [
+                    {
+                        "items": "minecraft:magenta_dye"
+                    }
+                ]
+            },
+            "trigger": "minecraft:inventory_changed"
+        },
+        "has_the_recipe": {
+            "conditions": {
+                "recipe": "colourful_enchanting_tables:magenta_enchanting_table_from_dye"
+            },
+            "trigger": "minecraft:recipe_unlocked"
+        }
+    },
+    "requirements": [
+        [
+            "has_the_recipe",
+            "has_needed_dye"
+        ]
+    ],
+    "rewards": {
+        "recipes": [
+            "colourful_enchanting_tables:magenta_enchanting_table_from_dye"
+        ]
+    }
+}
