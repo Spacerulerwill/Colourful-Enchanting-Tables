@@ -1,0 +1,25 @@
+{
+    "parent": "minecraft:recipes/root",
+    "criteria": {
+        "has_obsidian": {
+            "conditions": {
+                "items": [
+                    {
+                        "items": "minecraft:obsidian"
+                    }
+                ]
+            },
+            "trigger": "minecraft:inventory_changed"
+        }
+    },
+    "requirements": [
+        [
+            "has_obsidian"
+        ]
+    ],
+    "rewards": {
+        "recipes": [
+            "colourful_enchanting_tables:white_enchanting_table"
+        ]
+    }
+}

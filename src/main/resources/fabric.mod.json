@@ -1,14 +1,16 @@
 {
 	"schemaVersion": 1,
 	"id": "colourful_enchanting_tables",
-	"version": "${1.0}",
+	"version": "${version}",
 	"name": "Colourful Enchanting Tables",
-	"description": "A simple mod that adds coloured enchanting table variations for all the Minecraft primary colours",
+	"description": "A simple mod that adds coloured enchanting table variations for all the Minecraft primary colours.",
 	"authors": [
 		"Spacerulerwill"
 	],
 	"contact": {
-		"sources": "https://github.com/Spacerulerwill/Colourful-Enchanting-Tables"
+		"homepage": "https://github.com/Spacerulerwill/Colourful-Enchanting-Tables",
+		"sources": "https://github.com/Spacerulerwill/Colourful-Enchanting-Tables",
+		"issues": "https://github.com/Spacerulerwill/Colourful-Enchanting-Tables/issues"
 	},
 	"license": "MIT",
 	"icon": "assets/colourful_enchanting_tables/icon.png",
@@ -23,7 +25,7 @@
 	],
 	"depends": {
 		"fabricloader": ">=0.15.11",
-		"minecraft": "~1.21",
+		"minecraft": "1.21.1",
 		"java": ">=21",
 		"fabric-api": "*"
 	}

@@ -1,0 +1,25 @@
+{
+    "parent": "minecraft:recipes/root",
+    "criteria": {
+        "has_needed_dye": {
+            "conditions": {
+                "items": [
+                    {
+                        "items": "minecraft:light_blue_dye"
+                    }
+                ]
+            },
+            "trigger": "minecraft:inventory_changed"
+        }
+    },
+    "requirements": [
+        [
+            "has_needed_dye"
+        ]
+    ],
+    "rewards": {
+        "recipes": [
+            "colourful_enchanting_tables:light_blue_enchanting_table_from_dye"
+        ]
+    }
+}
