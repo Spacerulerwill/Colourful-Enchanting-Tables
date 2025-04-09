@@ -1,28 +1,28 @@
 {
-  "type": "minecraft:crafting_shaped",
-  "category": "misc",
-  "group": "enchanting_tables",
-  "key": {
-    "#": {
-      "item": "minecraft:obsidian"
+    "type": "minecraft:crafting_shaped",
+    "category": "misc",
+    "group": "enchanting_tables",
+    "key": {
+        "?": {
+            "item": "minecraft:obsidian"
+        },
+        "B": {
+            "item": "minecraft:book"
+        },
+        "D": {
+            "item": "minecraft:diamond"
+        },
+        "C": {
+            "item": "minecraft:green_carpet"
+        }
     },
-    "B": {
-      "item": "minecraft:book"
-    },
-    "D": {
-      "item": "minecraft:diamond"
-    },
-    "C": {
-      "item": "minecraft:green_carpet"
+    "pattern": [
+        "DBD",
+        "C?C",
+        "???"
+    ],
+    "result": {
+        "count": 1,
+        "id": "colourful_enchanting_tables:green_enchanting_table"
     }
-  },
-  "pattern": [
-    "DBD",
-    "C#C",
-    "###"
-  ],
-  "result": {
-    "count": 1,
-    "id": "colourful_enchanting_tables:green_enchanting_table"
-  }
 }

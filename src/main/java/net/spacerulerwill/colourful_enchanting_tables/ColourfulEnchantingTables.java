@@ -2,34 +2,24 @@ package net.spacerulerwill.colourful_enchanting_tables;
 
 import com.google.common.collect.ImmutableSet;
 import net.fabricmc.api.ModInitializer;
-
-import net.fabricmc.fabric.api.item.v1.FabricItem;
-import net.fabricmc.fabric.api.item.v1.FabricItemStack;
-import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroupEntries;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
-import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.fabricmc.loader.api.FabricLoader;
 import net.fabricmc.loader.api.MappingResolver;
-import net.minecraft.block.AbstractBlock;
-import net.minecraft.block.Block;
-import net.minecraft.block.Blocks;
-import net.minecraft.block.EnchantingTableBlock;
+import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntityType;
-import net.minecraft.block.entity.EnchantingTableBlockEntity;
+import net.minecraft.block.enums.NoteBlockInstrument;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemFrameItem;
 import net.minecraft.item.ItemGroups;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
+import net.minecraft.registry.RegistryKey;
+import net.minecraft.registry.RegistryKeys;
 import net.minecraft.util.Identifier;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.lang.invoke.MethodHandle;
-import java.lang.invoke.MethodHandles;
-import java.lang.invoke.MethodType;
 import java.lang.reflect.Field;
 import java.util.Set;
 
@@ -37,29 +27,33 @@ public class ColourfulEnchantingTables implements ModInitializer {
 	public static final String MOD_ID = "colourful_enchanting_tables";
     public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
 
-	public static final Block WHITE_ENCHANTING_TABLE = registerBlock("white_enchanting_table", new EnchantingTableBlock(AbstractBlock.Settings.copy(Blocks.ENCHANTING_TABLE)));
-	public static final Block LIGHT_GRAY_ENCHANTING_TABLE = registerBlock("light_gray_enchanting_table", new EnchantingTableBlock(AbstractBlock.Settings.copy(Blocks.ENCHANTING_TABLE)));
-	public static final Block GRAY_ENCHANTING_TABLE = registerBlock("gray_enchanting_table", new EnchantingTableBlock(AbstractBlock.Settings.copy(Blocks.ENCHANTING_TABLE)));
-	public static final Block BLACK_ENCHANTING_TABLE = registerBlock("black_enchanting_table", new EnchantingTableBlock(AbstractBlock.Settings.copy(Blocks.ENCHANTING_TABLE)));
-	public static final Block BROWN_ENCHANTING_TABLE = registerBlock("brown_enchanting_table", new EnchantingTableBlock(AbstractBlock.Settings.copy(Blocks.ENCHANTING_TABLE)));
-	public static final Block ORANGE_ENCHANTING_TABLE = registerBlock("orange_enchanting_table", new EnchantingTableBlock(AbstractBlock.Settings.copy(Blocks.ENCHANTING_TABLE)));
-	public static final Block YELLOW_ENCHANTING_TABLE = registerBlock("yellow_enchanting_table", new EnchantingTableBlock(AbstractBlock.Settings.copy(Blocks.ENCHANTING_TABLE)));
-	public static final Block LIME_ENCHANTING_TABLE = registerBlock("lime_enchanting_table", new EnchantingTableBlock(AbstractBlock.Settings.copy(Blocks.ENCHANTING_TABLE)));
-	public static final Block GREEN_ENCHANTING_TABLE = registerBlock("green_enchanting_table", new EnchantingTableBlock(AbstractBlock.Settings.copy(Blocks.ENCHANTING_TABLE)));
-	public static final Block CYAN_ENCHANTING_TABLE = registerBlock("cyan_enchanting_table", new EnchantingTableBlock(AbstractBlock.Settings.copy(Blocks.ENCHANTING_TABLE)));
-	public static final Block LIGHT_BLUE_ENCHANTING_TABLE = registerBlock("light_blue_enchanting_table", new EnchantingTableBlock(AbstractBlock.Settings.copy(Blocks.ENCHANTING_TABLE)));
-	public static final Block BLUE_ENCHANTING_TABLE = registerBlock("blue_enchanting_table", new EnchantingTableBlock(AbstractBlock.Settings.copy(Blocks.ENCHANTING_TABLE)));
-	public static final Block PURPLE_ENCHANTING_TABLE = registerBlock("purple_enchanting_table", new EnchantingTableBlock(AbstractBlock.Settings.copy(Blocks.ENCHANTING_TABLE)));
-	public static final Block MAGENTA_ENCHANTING_TABLE = registerBlock("magenta_enchanting_table", new EnchantingTableBlock(AbstractBlock.Settings.copy(Blocks.ENCHANTING_TABLE)));
-	public static final Block PINK_ENCHANTING_TABLE = registerBlock("pink_enchanting_table", new EnchantingTableBlock(AbstractBlock.Settings.copy(Blocks.ENCHANTING_TABLE)));
+	public static final Block WHITE_ENCHANTING_TABLE = registerEnchantingTable("white_enchanting_table", MapColor.WHITE);
+	public static final Block LIGHT_GRAY_ENCHANTING_TABLE = registerEnchantingTable("light_gray_enchanting_table", MapColor.LIGHT_GRAY);
+	public static final Block GRAY_ENCHANTING_TABLE = registerEnchantingTable("gray_enchanting_table", MapColor.GRAY);
+	public static final Block BLACK_ENCHANTING_TABLE = registerEnchantingTable("black_enchanting_table", MapColor.BLACK);
+	public static final Block BROWN_ENCHANTING_TABLE = registerEnchantingTable("brown_enchanting_table", MapColor.BROWN);
+	public static final Block ORANGE_ENCHANTING_TABLE = registerEnchantingTable("orange_enchanting_table", MapColor.ORANGE);
+	public static final Block YELLOW_ENCHANTING_TABLE = registerEnchantingTable("yellow_enchanting_table", MapColor.YELLOW);
+	public static final Block LIME_ENCHANTING_TABLE = registerEnchantingTable("lime_enchanting_table", MapColor.LIME);
+	public static final Block GREEN_ENCHANTING_TABLE = registerEnchantingTable("green_enchanting_table", MapColor.GREEN);
+	public static final Block CYAN_ENCHANTING_TABLE = registerEnchantingTable("cyan_enchanting_table", MapColor.CYAN);
+	public static final Block LIGHT_BLUE_ENCHANTING_TABLE = registerEnchantingTable("light_blue_enchanting_table", MapColor.LIGHT_BLUE);
+	public static final Block BLUE_ENCHANTING_TABLE = registerEnchantingTable("blue_enchanting_table", MapColor.BLUE);
+	public static final Block PURPLE_ENCHANTING_TABLE = registerEnchantingTable("purple_enchanting_table", MapColor.PURPLE);
+	public static final Block MAGENTA_ENCHANTING_TABLE = registerEnchantingTable("magenta_enchanting_table", MapColor.MAGENTA);
+	public static final Block PINK_ENCHANTING_TABLE = registerEnchantingTable("pink_enchanting_table", MapColor.PINK);
 
 	private static Item registerBlockItem(String name, Block block) {
 		return Registry.register(Registries.ITEM, Identifier.of(MOD_ID, name), new BlockItem(block, new Item.Settings()));
 	}
 
-	private static Block registerBlock(String name, Block block) {
+	private static Block registerEnchantingTable(String name, MapColor mapColor) {
+		Identifier id = Identifier.of(MOD_ID, name);
+		RegistryKey<Block> key = RegistryKey.of(RegistryKeys.BLOCK, id);
+		AbstractBlock.Settings settings = AbstractBlock.Settings.copy(Blocks.ENCHANTING_TABLE).mapColor(mapColor);
+		Block block = new EnchantingTableBlock(settings);
 		registerBlockItem(name, block);
-		return Registry.register(Registries.BLOCK, Identifier.of(MOD_ID, name), block);
+		return Registry.register(Registries.BLOCK, key, block);
 	}
 
 	private static void addItemsToFunctionalBlocksGroup(FabricItemGroupEntries entries) {
