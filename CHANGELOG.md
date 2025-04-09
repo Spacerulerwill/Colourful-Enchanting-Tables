@@ -1,3 +1,5 @@
+# 1.2.0-1.21.5 - 09/04/25
+* Added separate recipe advancements for enchanting table dyeing recipes.
 # 1.1.4-1.21.5 - 08/04/25
 * Fixed bug where red enchanting table recipe advancement was unobtainable.
 # 1.1.3-1.21.5 - 08/04/25
