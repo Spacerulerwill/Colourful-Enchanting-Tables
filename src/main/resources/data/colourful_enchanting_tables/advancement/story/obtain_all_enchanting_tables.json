@@ -1,71 +1,21 @@
 {
     "parent": "minecraft:story/mine_diamond",
     "criteria": {
-        "purple_enchanting_table": {
+        "white_enchanting_table": {
             "conditions": {
                 "items": [
                     {
-                        "items": "colourful_enchanting_tables:purple_enchanting_table"
+                        "items": "colourful_enchanting_tables:white_enchanting_table"
                     }
                 ]
             },
             "trigger": "minecraft:inventory_changed"
         },
-        "brown_enchanting_table": {
+        "light_gray_enchanting_table": {
             "conditions": {
                 "items": [
                     {
-                        "items": "colourful_enchanting_tables:brown_enchanting_table"
-                    }
-                ]
-            },
-            "trigger": "minecraft:inventory_changed"
-        },
-        "black_enchanting_table": {
-            "conditions": {
-                "items": [
-                    {
-                        "items": "colourful_enchanting_tables:black_enchanting_table"
-                    }
-                ]
-            },
-            "trigger": "minecraft:inventory_changed"
-        },
-        "pink_enchanting_table": {
-            "conditions": {
-                "items": [
-                    {
-                        "items": "colourful_enchanting_tables:pink_enchanting_table"
-                    }
-                ]
-            },
-            "trigger": "minecraft:inventory_changed"
-        },
-        "orange_enchanting_table": {
-            "conditions": {
-                "items": [
-                    {
-                        "items": "colourful_enchanting_tables:orange_enchanting_table"
-                    }
-                ]
-            },
-            "trigger": "minecraft:inventory_changed"
-        },
-        "light_blue_enchanting_table": {
-            "conditions": {
-                "items": [
-                    {
-                        "items": "colourful_enchanting_tables:light_blue_enchanting_table"
-                    }
-                ]
-            },
-            "trigger": "minecraft:inventory_changed"
-        },
-        "blue_enchanting_table": {
-            "conditions": {
-                "items": [
-                    {
-                        "items": "colourful_enchanting_tables:blue_enchanting_table"
+                        "items": "colourful_enchanting_tables:light_gray_enchanting_table"
                     }
                 ]
             },
@@ -81,11 +31,21 @@
             },
             "trigger": "minecraft:inventory_changed"
         },
-        "yellow_enchanting_table": {
+        "black_enchanting_table": {
             "conditions": {
                 "items": [
                     {
-                        "items": "colourful_enchanting_tables:yellow_enchanting_table"
+                        "items": "colourful_enchanting_tables:black_enchanting_table"
+                    }
+                ]
+            },
+            "trigger": "minecraft:inventory_changed"
+        },
+        "brown_enchanting_table": {
+            "conditions": {
+                "items": [
+                    {
+                        "items": "colourful_enchanting_tables:brown_enchanting_table"
                     }
                 ]
             },
@@ -96,6 +56,26 @@
                 "items": [
                     {
                         "items": "minecraft:enchanting_table"
+                    }
+                ]
+            },
+            "trigger": "minecraft:inventory_changed"
+        },
+        "orange_enchanting_table": {
+            "conditions": {
+                "items": [
+                    {
+                        "items": "colourful_enchanting_tables:orange_enchanting_table"
+                    }
+                ]
+            },
+            "trigger": "minecraft:inventory_changed"
+        },
+        "yellow_enchanting_table": {
+            "conditions": {
+                "items": [
+                    {
+                        "items": "colourful_enchanting_tables:yellow_enchanting_table"
                     }
                 ]
             },
@@ -131,11 +111,31 @@
             },
             "trigger": "minecraft:inventory_changed"
         },
-        "light_gray_enchanting_table": {
+        "light_blue_enchanting_table": {
             "conditions": {
                 "items": [
                     {
-                        "items": "colourful_enchanting_tables:light_gray_enchanting_table"
+                        "items": "colourful_enchanting_tables:light_blue_enchanting_table"
+                    }
+                ]
+            },
+            "trigger": "minecraft:inventory_changed"
+        },
+        "blue_enchanting_table": {
+            "conditions": {
+                "items": [
+                    {
+                        "items": "colourful_enchanting_tables:blue_enchanting_table"
+                    }
+                ]
+            },
+            "trigger": "minecraft:inventory_changed"
+        },
+        "purple_enchanting_table": {
+            "conditions": {
+                "items": [
+                    {
+                        "items": "colourful_enchanting_tables:purple_enchanting_table"
                     }
                 ]
             },
@@ -151,11 +151,11 @@
             },
             "trigger": "minecraft:inventory_changed"
         },
-        "white_enchanting_table": {
+        "pink_enchanting_table": {
             "conditions": {
                 "items": [
                     {
-                        "items": "colourful_enchanting_tables:white_enchanting_table"
+                        "items": "colourful_enchanting_tables:pink_enchanting_table"
                     }
                 ]
             },
@@ -176,34 +176,28 @@
     },
     "requirements": [
         [
-            "purple_enchanting_table"
+            "white_enchanting_table"
         ],
         [
-            "brown_enchanting_table"
-        ],
-        [
-            "black_enchanting_table"
-        ],
-        [
-            "pink_enchanting_table"
-        ],
-        [
-            "orange_enchanting_table"
-        ],
-        [
-            "light_blue_enchanting_table"
-        ],
-        [
-            "blue_enchanting_table"
+            "light_gray_enchanting_table"
         ],
         [
             "gray_enchanting_table"
         ],
         [
-            "yellow_enchanting_table"
+            "black_enchanting_table"
+        ],
+        [
+            "brown_enchanting_table"
         ],
         [
             "red_enchanting_table"
+        ],
+        [
+            "orange_enchanting_table"
+        ],
+        [
+            "yellow_enchanting_table"
         ],
         [
             "lime_enchanting_table"
@@ -215,13 +209,19 @@
             "cyan_enchanting_table"
         ],
         [
-            "light_gray_enchanting_table"
+            "light_blue_enchanting_table"
+        ],
+        [
+            "blue_enchanting_table"
+        ],
+        [
+            "purple_enchanting_table"
         ],
         [
             "magenta_enchanting_table"
         ],
         [
-            "white_enchanting_table"
+            "pink_enchanting_table"
         ]
     ],
     "sends_telemetry_event": true
