@@ -1,26 +1,24 @@
 import os
 import json
 
-ALL_TABLE_COLOURS = set(
-    (
-        "white",
-        "light_gray",
-        "gray",
-        "black",
-        "brown",
-        "red",
-        "orange",
-        "yellow",
-        "lime",
-        "green",
-        "cyan",
-        "light_blue",
-        "blue",
-        "purple",
-        "magenta",
-        "pink",
-    )
-)
+ALL_TABLE_COLOURS = [
+    "white",
+    "light_gray",
+    "gray",
+    "black",
+    "brown",
+    "red",
+    "orange",
+    "yellow",
+    "lime",
+    "green",
+    "cyan",
+    "light_blue",
+    "blue",
+    "purple",
+    "magenta",
+    "pink",
+]
 
 
 def get_name_from_colour(colour: str) -> str:
@@ -165,25 +163,42 @@ def get_dye_recipe_string(colour: str) -> str:
 
 
 MOD_ID = "colourful_enchanting_tables"
+OUR_RECIPE_ADVANCEMENTS_PATH = os.path.join(
+    "data", MOD_ID, "advancement", "recipes", "decorations"
+)
+OUR_STORY_ADVANCEMENTS_PATH = os.path.join("data", MOD_ID, "advancement", "story")
+MINECRAFT_RECIPE_ADVANCEMENTS_PATH = os.path.join(
+    "data", "minecraft", "advancement", "recipes", "decorations"
+)
+OUR_BLOCK_LOOT_TABLES_PATH = os.path.join("data", MOD_ID, "loot_table", "blocks")
+OUR_RECIPE_PATH = os.path.join("data", MOD_ID, "recipe")
+MINECRAFT_RECIPE_PATH = os.path.join("data", "minecraft", "recipe")
+MINECRAFT_MINEABLE_BLOCK_TAGS = os.path.join(
+    "data", "minecraft", "tags", "block", "mineable"
+)
+ALL_PATHS = [
+    OUR_RECIPE_ADVANCEMENTS_PATH,
+    OUR_STORY_ADVANCEMENTS_PATH,
+    MINECRAFT_RECIPE_ADVANCEMENTS_PATH,
+    OUR_BLOCK_LOOT_TABLES_PATH,
+    OUR_RECIPE_PATH,
+    MINECRAFT_RECIPE_PATH,
+    MINECRAFT_MINEABLE_BLOCK_TAGS,
+]
 
 
 def create_folder_structure() -> None:
-    os.makedirs(f"data/{MOD_ID}/advancement/recipes/decorations", exist_ok=True)
-    os.makedirs(f"data/{MOD_ID}/advancement/story", exist_ok=True)
-    os.makedirs("data/minecraft/advancement/recipes/decorations", exist_ok=True)
-    os.makedirs(f"data/{MOD_ID}/loot_table/blocks", exist_ok=True)
-    os.makedirs(f"data/{MOD_ID}/recipe", exist_ok=True)
-    os.makedirs("data/minecraft/recipe", exist_ok=True)
-    os.makedirs("data/minecraft/tags/block/mineable", exist_ok=True)
+    for path in ALL_PATHS:
+        os.makedirs(path, exist_ok=True)
 
 
 def create_recipes() -> None:
     for colour in ALL_TABLE_COLOURS:
         file_path: str
         if colour == "red":
-            file_path = "data/minecraft/recipe/enchanting_table.json"
+            file_path = os.path.join(MINECRAFT_RECIPE_PATH, "enchanting_table.json")
         else:
-            file_path = f"data/{MOD_ID}/recipe/{colour}_enchanting_table.json"
+            file_path = os.path.join(OUR_RECIPE_PATH, f"{colour}_enchanting_table.json")
         item_name = get_name_from_colour(colour)
         file_content = get_recipe_string(colour, item_name)
         with open(file_path, "w+") as f:
@@ -193,7 +208,8 @@ def create_recipes() -> None:
 def create_dye_recipes() -> None:
     for colour in ALL_TABLE_COLOURS:
         with open(
-            f"data/{MOD_ID}/recipe/{colour}_enchanting_table_from_dye.json", "w+"
+            os.path.join(OUR_RECIPE_PATH, f"{colour}_enchanting_table_from_dye.json"),
+            "w+",
         ) as f:
             f.write(get_dye_recipe_string(colour))
 
@@ -201,7 +217,7 @@ def create_dye_recipes() -> None:
 def replace_enchanting_table_recipe_advancement() -> None:
     """Special case: replacing the vanilla enchanting table recipe advancement to give you a white enchanting table instead of a red one"""
     with open(
-        "data/minecraft/advancement/recipes/decorations/enchanting_table.json", "w+"
+        os.path.join(MINECRAFT_RECIPE_ADVANCEMENTS_PATH, "enchanting_table.json"), "w+"
     ) as f:
         json.dump(
             {
@@ -233,7 +249,9 @@ def create_enchanting_table_recipe_advancements() -> None:
     colours.remove("white")
     for colour in colours:
         with open(
-            f"data/{MOD_ID}/advancement/recipes/decorations/{colour}_enchanting_table.json",
+            os.path.join(
+                OUR_RECIPE_ADVANCEMENTS_PATH, f"{colour}_enchanting_table.json"
+            ),
             "w+",
         ) as f:
             f.write(get_enchanting_table_recipe_advancement(colour))
@@ -242,7 +260,9 @@ def create_enchanting_table_recipe_advancements() -> None:
 def create_enchanting_table_dye_recipe_advancements() -> None:
     for colour in ALL_TABLE_COLOURS:
         with open(
-            f"data/{MOD_ID}/advancement/recipes/decorations/{colour}_enchanting_table_from_dye.json",
+            os.path.join(
+                OUR_RECIPE_ADVANCEMENTS_PATH, f"{colour}_enchanting_table_from_dye.json"
+            ),
             "w+",
         ) as f:
             f.write(get_enchanting_table_dye_recipe_advancement(colour))
@@ -253,7 +273,8 @@ def create_block_loot_tables() -> None:
     colours.remove("red")
     for colour in colours:
         with open(
-            f"data/{MOD_ID}/loot_table/blocks/{colour}_enchanting_table.json", "w+"
+            os.path.join(OUR_BLOCK_LOOT_TABLES_PATH, f"{colour}_enchanting_table.json"),
+            "w+",
         ) as f:
             f.write(get_enchanting_table_loot_table(colour))
 
@@ -264,7 +285,7 @@ def create_pickaxe_mineable_json() -> None:
     all_table_names = [
         f"colourful_enchanting_tables:{colour}_enchanting_table" for colour in colours
     ]
-    with open(f"data/minecraft/tags/block/mineable/pickaxe.json", "w+") as f:
+    with open(os.path.join(MINECRAFT_MINEABLE_BLOCK_TAGS, "pickaxe.json"), "w+") as f:
         json.dump({"replace": False, "values": all_table_names}, f, indent=4)
 
 
@@ -278,7 +299,8 @@ def create_rainbow_tables_advancement() -> None:
     }
     requirements = [[f"{colour}_enchanting_table"] for colour in ALL_TABLE_COLOURS]
     with open(
-        f"data/{MOD_ID}/advancement/story/obtain_all_enchanting_tables.json", "w+"
+        os.path.join(OUR_STORY_ADVANCEMENTS_PATH, "obtain_all_enchanting_tables.json"),
+        "w+",
     ) as f:
         json.dump(
             {
