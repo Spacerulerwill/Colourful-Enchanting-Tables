@@ -1,3 +1,5 @@
+# 1.1.0-1.20.6 - 10/04/25
+* Backported from **1.1.0-1.21.0** to **1.1.0-1.20.6**
 # 1.1.0-1.21.0 - 09/04/25
 * Added homepage and issue tracker to mod metadata
 * Added separate recipe advancements for enchanting table dyeing recipes.
