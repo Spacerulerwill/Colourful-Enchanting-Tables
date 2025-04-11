@@ -35,21 +35,13 @@ def get_recipe_string(colour: str, item_name: str) -> str:
             "category": "misc",
             "group": "enchanting_tables",
             "key": {
-                "?": {
-                    "item": "minecraft:obsidian"
-                },
-                "B": {
-                    "item": "minecraft:book"
-                },
-                "D": {
-                    "item": "minecraft:diamond"
-                },
-                "C": {
-                    "item": f"minecraft:{colour}_carpet"
-                }
+                "?": {"item": "minecraft:obsidian"},
+                "B": {"item": "minecraft:book"},
+                "D": {"item": "minecraft:diamond"},
+                "C": {"item": f"minecraft:{colour}_carpet"},
             },
             "pattern": ["DBD", "C?C", "???"],
-            "result": {"count": 1, "id": item_name},
+            "result": {"count": 1, "item": item_name},
         },
         indent=4,
     )
@@ -96,7 +88,7 @@ def get_enchanting_table_dye_recipe_advancement(colour: str) -> str:
             "parent": "minecraft:recipes/root",
             "criteria": {
                 "has_needed_dye": {
-                    "conditions": {"items": [{"items": f"minecraft:{colour}_dye"}]},
+                    "conditions": {"items": [{"items": [f"minecraft:{colour}_dye"]}]},
                     "trigger": "minecraft:inventory_changed",
                 },
             },
@@ -117,25 +109,23 @@ def get_enchanting_table_loot_table(colour: str) -> str:
             "type": "minecraft:block",
             "pools": [
                 {
-                    "bonus_rolls": 0,
+                    "bonus_rolls": 0.0,
                     "conditions": [{"condition": "minecraft:survives_explosion"}],
                     "entries": [
                         {
                             "type": "minecraft:item",
                             "functions": [
                                 {
-                                    "function": "minecraft:copy_components",
-                                    "include": ["minecraft:custom_name"],
+                                    "function": "minecraft:copy_name",
                                     "source": "block_entity",
                                 }
                             ],
                             "name": f"colourful_enchanting_tables:{colour}_enchanting_table",
                         }
                     ],
-                    "rolls": 1,
+                    "rolls": 1.0,
                 }
             ],
-            "random_sequence": f"colourful_enchanting_tables:blocks/{colour}_enchanting_table",
         },
         indent=4,
     )
@@ -152,7 +142,7 @@ def get_dye_recipe_string(colour: str) -> str:
             "category": "misc",
             "group": "enchanting_tables_from_dye",
             "ingredients": [ingredients, {"item": f"minecraft:{colour}_dye"}],
-            "result": {"count": 1, "id": this_table},
+            "result": {"count": 1, "item": this_table},
         },
         indent=4,
     )
@@ -212,6 +202,7 @@ def create_dye_recipes() -> None:
 
 def replace_enchanting_table_recipe_advancement() -> None:
     """Special case: replacing the vanilla enchanting table recipe advancement to give you a white enchanting table instead of a red one"""
+
     with open(
         os.path.join(MINECRAFT_RECIPE_ADVANCEMENTS_PATH, "enchanting_table.json"), "w+"
     ) as f:
@@ -220,11 +211,17 @@ def replace_enchanting_table_recipe_advancement() -> None:
                 "parent": "minecraft:recipes/root",
                 "criteria": {
                     "has_obsidian": {
-                        "conditions": {"items": [{"items": "minecraft:obsidian"}]},
+                        "conditions": {"items": [{"items": ["minecraft:obsidian"]}]},
                         "trigger": "minecraft:inventory_changed",
                     },
+                    "has_the_recipe": {
+                        "conditions": {
+                            "recipe": "colourful_enchanting_tables:white_enchanting_table"
+                        },
+                        "trigger": "minecraft:recipe_unlocked",
+                    },
                 },
-                "requirements": [["has_obsidian"]],
+                "requirements": [["has_obsidian", "has_the_recipe"]],
                 "rewards": {
                     "recipes": ["colourful_enchanting_tables:white_enchanting_table"]
                 },
@@ -282,7 +279,7 @@ def create_pickaxe_mineable_json() -> None:
 def create_rainbow_tables_advancement() -> None:
     criteria = {
         f"{colour}_enchanting_table": {
-            "conditions": {"items": [{"items": get_name_from_colour(colour)}]},
+            "conditions": {"items": [{"items": [get_name_from_colour(colour)]}]},
             "trigger": "minecraft:inventory_changed",
         }
         for colour in ALL_TABLE_COLOURS
@@ -302,7 +299,7 @@ def create_rainbow_tables_advancement() -> None:
                     },
                     "icon": {
                         "count": 1,
-                        "id": "colourful_enchanting_tables:purple_enchanting_table",
+                        "item": "colourful_enchanting_tables:purple_enchanting_table",
                     },
                     "title": {
                         "translate": "advancements.story.obtain_all_enchanting_tables.title"

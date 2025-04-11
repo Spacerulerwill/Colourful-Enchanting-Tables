@@ -23,6 +23,6 @@
     ],
     "result": {
         "count": 1,
-        "id": "minecraft:enchanting_table"
+        "item": "minecraft:enchanting_table"
     }
 }
