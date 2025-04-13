@@ -2,20 +2,16 @@ package net.spacerulerwill.colourful_enchanting_tables;
 
 import com.google.common.collect.ImmutableSet;
 import net.fabricmc.api.ModInitializer;
-import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroupEntries;
-import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.fabricmc.loader.api.FabricLoader;
 import net.fabricmc.loader.api.MappingResolver;
 import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemGroups;
-import net.minecraft.registry.Registries;
-import net.minecraft.registry.Registry;
-import net.minecraft.registry.RegistryKey;
-import net.minecraft.registry.RegistryKeys;
+import net.minecraft.item.ItemGroup;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.registry.Registry;
+import net.minecraft.util.registry.RegistryKey;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -43,39 +39,21 @@ public class ColourfulEnchantingTables implements ModInitializer {
 	public static final Block PINK_ENCHANTING_TABLE = registerEnchantingTable("pink_enchanting_table", MapColor.PINK);
 
 	private static Item registerBlockItem(String name, Block block) {
-		return Registry.register(Registries.ITEM, Identifier.of(MOD_ID, name), new BlockItem(block, new Item.Settings()));
+		return Registry.register(Registry.ITEM, new Identifier(MOD_ID, name), new BlockItem(block, new Item.Settings().group(ItemGroup.DECORATIONS)));
 	}
 
 	private static Block registerEnchantingTable(String name, MapColor mapColor) {
-		Identifier id = Identifier.of(MOD_ID, name);
-		RegistryKey<Block> key = RegistryKey.of(RegistryKeys.BLOCK, id);
+		Identifier id = new Identifier(MOD_ID, name);
+		RegistryKey<Block> key = RegistryKey.of(Registry.BLOCK.getKey(), id);
 		AbstractBlock.Settings settings = AbstractBlock.Settings.copy(Blocks.ENCHANTING_TABLE).mapColor(mapColor);
 		Block block = new EnchantingTableBlock(settings);
 		registerBlockItem(name, block);
-		return Registry.register(Registries.BLOCK, key, block);
+		return Registry.register(Registry.BLOCK, key, block);
 	}
 
-	private static void addItemsToFunctionalBlocksGroup(FabricItemGroupEntries entries) {
-		entries.add(WHITE_ENCHANTING_TABLE);
-		entries.add(LIGHT_GRAY_ENCHANTING_TABLE);
-		entries.add(GRAY_ENCHANTING_TABLE);
-		entries.add(BLACK_ENCHANTING_TABLE);
-		entries.add(BROWN_ENCHANTING_TABLE);
-		entries.add(ORANGE_ENCHANTING_TABLE);
-		entries.add(YELLOW_ENCHANTING_TABLE);
-		entries.add(LIME_ENCHANTING_TABLE);
-		entries.add(GREEN_ENCHANTING_TABLE);
-		entries.add(CYAN_ENCHANTING_TABLE);
-		entries.add(LIGHT_BLUE_ENCHANTING_TABLE);
-		entries.add(BLUE_ENCHANTING_TABLE);
-		entries.add(PURPLE_ENCHANTING_TABLE);
-		entries.add(MAGENTA_ENCHANTING_TABLE);
-		entries.add(PINK_ENCHANTING_TABLE);
-	}
 
 	@Override
 	public void onInitialize() {
-		ItemGroupEvents.modifyEntriesEvent(ItemGroups.FUNCTIONAL).register(ColourfulEnchantingTables::addItemsToFunctionalBlocksGroup);
 		editEnchantingTableBlockEntity();
 		LOGGER.info("Colourful Enchanting Tables is initialised!");
 	}

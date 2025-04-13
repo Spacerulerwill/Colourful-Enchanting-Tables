@@ -199,7 +199,6 @@
             "translate": "advancements.story.obtain_all_enchanting_tables.description"
         },
         "icon": {
-            "count": 1,
             "item": "colourful_enchanting_tables:purple_enchanting_table"
         },
         "title": {
