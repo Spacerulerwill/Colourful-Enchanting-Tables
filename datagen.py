@@ -71,10 +71,16 @@ def get_enchanting_table_recipe_advancement(colour: str) -> str:
                         ]
                     },
                 },
+                "has_the_recipe": {
+                    "conditions": {
+                        "recipe": f"colourful_enchanting_tables:{colour}_enchanting_table"
+                    },
+                    "trigger": "minecraft:recipe_unlocked",
+                },
             },
             "requirements": [
-                ["has_white_enchanting_table_recipe"],
-                ["has_item"],
+                ["has_the_recipe", "has_white_enchanting_table_recipe"],
+                ["has_the_recipe", "has_item"],
             ],
             "rewards": {"recipes": [get_name_from_colour(colour)]},
         },
@@ -91,8 +97,14 @@ def get_enchanting_table_dye_recipe_advancement(colour: str) -> str:
                     "conditions": {"items": [{"items": [f"minecraft:{colour}_dye"]}]},
                     "trigger": "minecraft:inventory_changed",
                 },
+                "has_the_recipe": {
+                    "conditions": {
+                        "recipe": f"colourful_enchanting_tables:{colour}_enchanting_table_from_dye"
+                    },
+                    "trigger": "minecraft:recipe_unlocked",
+                },
             },
-            "requirements": [["has_needed_dye"]],
+            "requirements": [["has_the_recipe", "has_needed_dye"]],
             "rewards": {
                 "recipes": [
                     f"colourful_enchanting_tables:{colour}_enchanting_table_from_dye"
