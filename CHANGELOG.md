@@ -1,3 +1,5 @@
+# 1.1.1-1.16.5 - 20/04/25
+* Fixed bug where map colours were incorrect.
 # 1.1.0-1.16.5 - 20/04/25
 * Backported from **1.1.0-1.17.1** to **1.1.0-1.16.5**
 # 1.1.0-1.17.1 - 14/04/25
