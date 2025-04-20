@@ -47,8 +47,7 @@ public class ColourfulEnchantingTables implements ModInitializer {
 
     private static Block registerEnchantingTable(String name, MapColor mapColor) {
         Identifier id = new Identifier(MOD_ID, name);
-        //AbstractBlock.Settings settings = AbstractBlock.Settings.copy(Blocks.ENCHANTING_TABLE).mapColor(mapColor);
-        AbstractBlock.Settings settings = AbstractBlock.Settings.copy(Blocks.ENCHANTING_TABLE);
+        AbstractBlock.Settings settings = ((AbstractBlockSettingsExtension) AbstractBlock.Settings.copy(Blocks.ENCHANTING_TABLE)).colourful_enchanting_tables$mapColor(mapColor);
         Block block = new EnchantingTableBlock(settings);
         registerBlockItem(name, block);
         return Registry.register(Registry.BLOCK, id, block);
