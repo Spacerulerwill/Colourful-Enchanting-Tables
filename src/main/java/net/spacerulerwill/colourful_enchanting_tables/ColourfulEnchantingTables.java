@@ -15,15 +15,15 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.lang.reflect.Field;
 import java.util.Set;
 
 public class ColourfulEnchantingTables implements ModInitializer {
     public static final String MOD_ID = "colourful_enchanting_tables";
-    public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
+    public static final Logger LOGGER = LogManager.getLogger(MOD_ID);
 
     public static final Block WHITE_ENCHANTING_TABLE = registerEnchantingTable("white_enchanting_table", MapColor.WHITE);
     public static final Block LIGHT_GRAY_ENCHANTING_TABLE = registerEnchantingTable("light_gray_enchanting_table", MapColor.LIGHT_GRAY);
@@ -47,7 +47,8 @@ public class ColourfulEnchantingTables implements ModInitializer {
 
     private static Block registerEnchantingTable(String name, MapColor mapColor) {
         Identifier id = new Identifier(MOD_ID, name);
-        AbstractBlock.Settings settings = AbstractBlock.Settings.copy(Blocks.ENCHANTING_TABLE).mapColor(mapColor);
+        //AbstractBlock.Settings settings = AbstractBlock.Settings.copy(Blocks.ENCHANTING_TABLE).mapColor(mapColor);
+        AbstractBlock.Settings settings = AbstractBlock.Settings.copy(Blocks.ENCHANTING_TABLE);
         Block block = new EnchantingTableBlock(settings);
         registerBlockItem(name, block);
         return Registry.register(Registry.BLOCK, id, block);

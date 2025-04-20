@@ -12,17 +12,14 @@
             "conditions": {
                 "items": [
                     {
-                        "items": [
-                            "minecraft:orange_wool",
-                            "minecraft:orange_carpet"
-                        ]
+                        "item": "minecraft:cyan_wool"
                     }
                 ]
             }
         },
         "has_the_recipe": {
             "conditions": {
-                "recipe": "colourful_enchanting_tables:orange_enchanting_table"
+                "recipe": "colourful_enchanting_tables:cyan_enchanting_table"
             },
             "trigger": "minecraft:recipe_unlocked"
         }
@@ -39,7 +36,7 @@
     ],
     "rewards": {
         "recipes": [
-            "colourful_enchanting_tables:orange_enchanting_table"
+            "colourful_enchanting_tables:cyan_enchanting_table"
         ]
     }
 }

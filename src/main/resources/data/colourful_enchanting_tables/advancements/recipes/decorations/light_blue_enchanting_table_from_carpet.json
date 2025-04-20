@@ -12,10 +12,7 @@
             "conditions": {
                 "items": [
                     {
-                        "items": [
-                            "minecraft:light_blue_wool",
-                            "minecraft:light_blue_carpet"
-                        ]
+                        "item": "minecraft:light_blue_carpet"
                     }
                 ]
             }

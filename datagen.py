@@ -47,7 +47,7 @@ def get_recipe_string(colour: str, item_name: str) -> str:
     )
 
 
-def get_enchanting_table_recipe_advancement(colour: str) -> str:
+def get_enchanting_table_recipe_advancement(colour: str, item: str) -> str:
     return json.dumps(
         {
             "parent": "minecraft:recipes/root",
@@ -63,10 +63,7 @@ def get_enchanting_table_recipe_advancement(colour: str) -> str:
                     "conditions": {
                         "items": [
                             {
-                                "items": [
-                                    f"minecraft:{colour}_wool",
-                                    f"minecraft:{colour}_carpet",
-                                ]
+                                "item": f"minecraft:{colour}_{item}",
                             }
                         ]
                     },
@@ -94,7 +91,7 @@ def get_enchanting_table_dye_recipe_advancement(colour: str) -> str:
             "parent": "minecraft:recipes/root",
             "criteria": {
                 "has_needed_dye": {
-                    "conditions": {"items": [{"items": [f"minecraft:{colour}_dye"]}]},
+                    "conditions": {"items": [{"item": f"minecraft:{colour}_dye"}]},
                     "trigger": "minecraft:inventory_changed",
                 },
                 "has_the_recipe": {
@@ -223,7 +220,7 @@ def replace_enchanting_table_recipe_advancement() -> None:
                 "parent": "minecraft:recipes/root",
                 "criteria": {
                     "has_obsidian": {
-                        "conditions": {"items": [{"items": ["minecraft:obsidian"]}]},
+                        "conditions": {"items": [{"item": "minecraft:obsidian"}]},
                         "trigger": "minecraft:inventory_changed",
                     },
                     "has_the_recipe": {
@@ -249,11 +246,21 @@ def create_enchanting_table_recipe_advancements() -> None:
     for colour in colours:
         with open(
             os.path.join(
-                OUR_RECIPE_ADVANCEMENTS_PATH, f"{colour}_enchanting_table.json"
+                OUR_RECIPE_ADVANCEMENTS_PATH,
+                f"{colour}_enchanting_table_from_wool.json",
             ),
             "w+",
         ) as f:
-            f.write(get_enchanting_table_recipe_advancement(colour))
+            f.write(get_enchanting_table_recipe_advancement(colour, "wool"))
+
+        with open(
+            os.path.join(
+                OUR_RECIPE_ADVANCEMENTS_PATH,
+                f"{colour}_enchanting_table_from_carpet.json",
+            ),
+            "w+",
+        ) as f:
+            f.write(get_enchanting_table_recipe_advancement(colour, "carpet"))
 
 
 def create_enchanting_table_dye_recipe_advancements() -> None:
@@ -291,7 +298,7 @@ def create_pickaxe_mineable_json() -> None:
 def create_rainbow_tables_advancement() -> None:
     criteria = {
         f"{colour}_enchanting_table": {
-            "conditions": {"items": [{"items": [get_name_from_colour(colour)]}]},
+            "conditions": {"items": [{"item": get_name_from_colour(colour)}]},
             "trigger": "minecraft:inventory_changed",
         }
         for colour in ALL_TABLE_COLOURS
@@ -310,7 +317,6 @@ def create_rainbow_tables_advancement() -> None:
                         "translate": "advancements.story.obtain_all_enchanting_tables.description"
                     },
                     "icon": {
-                        "count": 1,
                         "item": "colourful_enchanting_tables:purple_enchanting_table",
                     },
                     "title": {

@@ -12,17 +12,14 @@
             "conditions": {
                 "items": [
                     {
-                        "items": [
-                            "minecraft:light_gray_wool",
-                            "minecraft:light_gray_carpet"
-                        ]
+                        "item": "minecraft:black_carpet"
                     }
                 ]
             }
         },
         "has_the_recipe": {
             "conditions": {
-                "recipe": "colourful_enchanting_tables:light_gray_enchanting_table"
+                "recipe": "colourful_enchanting_tables:black_enchanting_table"
             },
             "trigger": "minecraft:recipe_unlocked"
         }
@@ -39,7 +36,7 @@
     ],
     "rewards": {
         "recipes": [
-            "colourful_enchanting_tables:light_gray_enchanting_table"
+            "colourful_enchanting_tables:black_enchanting_table"
         ]
     }
 }
