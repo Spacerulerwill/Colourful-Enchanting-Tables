@@ -4,11 +4,10 @@ import com.google.common.collect.ImmutableSet;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.loader.api.FabricLoader;
 import net.fabricmc.loader.api.MappingResolver;
-import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.EnchantingTableBlock;
-import net.minecraft.block.MapColor;
+import net.minecraft.block.MaterialColor;
 import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
@@ -25,29 +24,29 @@ public class ColourfulEnchantingTables implements ModInitializer {
     public static final String MOD_ID = "colourful_enchanting_tables";
     public static final Logger LOGGER = LogManager.getLogger(MOD_ID);
 
-    public static final Block WHITE_ENCHANTING_TABLE = registerEnchantingTable("white_enchanting_table", MapColor.WHITE);
-    public static final Block LIGHT_GRAY_ENCHANTING_TABLE = registerEnchantingTable("light_gray_enchanting_table", MapColor.LIGHT_GRAY);
-    public static final Block GRAY_ENCHANTING_TABLE = registerEnchantingTable("gray_enchanting_table", MapColor.GRAY);
-    public static final Block BLACK_ENCHANTING_TABLE = registerEnchantingTable("black_enchanting_table", MapColor.BLACK);
-    public static final Block BROWN_ENCHANTING_TABLE = registerEnchantingTable("brown_enchanting_table", MapColor.BROWN);
-    public static final Block ORANGE_ENCHANTING_TABLE = registerEnchantingTable("orange_enchanting_table", MapColor.ORANGE);
-    public static final Block YELLOW_ENCHANTING_TABLE = registerEnchantingTable("yellow_enchanting_table", MapColor.YELLOW);
-    public static final Block LIME_ENCHANTING_TABLE = registerEnchantingTable("lime_enchanting_table", MapColor.LIME);
-    public static final Block GREEN_ENCHANTING_TABLE = registerEnchantingTable("green_enchanting_table", MapColor.GREEN);
-    public static final Block CYAN_ENCHANTING_TABLE = registerEnchantingTable("cyan_enchanting_table", MapColor.CYAN);
-    public static final Block LIGHT_BLUE_ENCHANTING_TABLE = registerEnchantingTable("light_blue_enchanting_table", MapColor.LIGHT_BLUE);
-    public static final Block BLUE_ENCHANTING_TABLE = registerEnchantingTable("blue_enchanting_table", MapColor.BLUE);
-    public static final Block PURPLE_ENCHANTING_TABLE = registerEnchantingTable("purple_enchanting_table", MapColor.PURPLE);
-    public static final Block MAGENTA_ENCHANTING_TABLE = registerEnchantingTable("magenta_enchanting_table", MapColor.MAGENTA);
-    public static final Block PINK_ENCHANTING_TABLE = registerEnchantingTable("pink_enchanting_table", MapColor.PINK);
+    public static final Block WHITE_ENCHANTING_TABLE = registerEnchantingTable("white_enchanting_table", MaterialColor.WHITE);
+    public static final Block LIGHT_GRAY_ENCHANTING_TABLE = registerEnchantingTable("light_gray_enchanting_table", MaterialColor.LIGHT_GRAY);
+    public static final Block GRAY_ENCHANTING_TABLE = registerEnchantingTable("gray_enchanting_table", MaterialColor.GRAY);
+    public static final Block BLACK_ENCHANTING_TABLE = registerEnchantingTable("black_enchanting_table", MaterialColor.BLACK);
+    public static final Block BROWN_ENCHANTING_TABLE = registerEnchantingTable("brown_enchanting_table", MaterialColor.BROWN);
+    public static final Block ORANGE_ENCHANTING_TABLE = registerEnchantingTable("orange_enchanting_table", MaterialColor.ORANGE);
+    public static final Block YELLOW_ENCHANTING_TABLE = registerEnchantingTable("yellow_enchanting_table", MaterialColor.YELLOW);
+    public static final Block LIME_ENCHANTING_TABLE = registerEnchantingTable("lime_enchanting_table", MaterialColor.LIME);
+    public static final Block GREEN_ENCHANTING_TABLE = registerEnchantingTable("green_enchanting_table", MaterialColor.GREEN);
+    public static final Block CYAN_ENCHANTING_TABLE = registerEnchantingTable("cyan_enchanting_table", MaterialColor.CYAN);
+    public static final Block LIGHT_BLUE_ENCHANTING_TABLE = registerEnchantingTable("light_blue_enchanting_table", MaterialColor.LIGHT_BLUE);
+    public static final Block BLUE_ENCHANTING_TABLE = registerEnchantingTable("blue_enchanting_table", MaterialColor.BLUE);
+    public static final Block PURPLE_ENCHANTING_TABLE = registerEnchantingTable("purple_enchanting_table", MaterialColor.PURPLE);
+    public static final Block MAGENTA_ENCHANTING_TABLE = registerEnchantingTable("magenta_enchanting_table", MaterialColor.MAGENTA);
+    public static final Block PINK_ENCHANTING_TABLE = registerEnchantingTable("pink_enchanting_table", MaterialColor.PINK);
 
     private static Item registerBlockItem(String name, Block block) {
         return Registry.register(Registry.ITEM, new Identifier(MOD_ID, name), new BlockItem(block, new Item.Settings().group(ItemGroup.DECORATIONS)));
     }
 
-    private static Block registerEnchantingTable(String name, MapColor mapColor) {
+    private static Block registerEnchantingTable(String name, MaterialColor mapColor) {
         Identifier id = new Identifier(MOD_ID, name);
-        AbstractBlock.Settings settings = ((AbstractBlockSettingsExtension) AbstractBlock.Settings.copy(Blocks.ENCHANTING_TABLE)).colourful_enchanting_tables$mapColor(mapColor);
+        Block.Settings settings = ((BlockSettingsExtension) Block.Settings.copy(Blocks.ENCHANTING_TABLE)).colourful_enchanting_tables$mapColor(mapColor);
         Block block = new EnchantingTableBlock(settings);
         registerBlockItem(name, block);
         return Registry.register(Registry.BLOCK, id, block);

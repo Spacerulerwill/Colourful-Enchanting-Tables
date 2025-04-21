@@ -4,8 +4,8 @@
   "package": "net.spacerulerwill.colourful_enchanting_tables.mixin",
   "compatibilityLevel": "JAVA_8",
   "mixins": [
-    "AbstractBlockSettingsMixin",
-    "EnchantmentScreenHandlerMixin"
+    "BlockSettingsMixin",
+    "EnchantingTableContainerMixin"
   ],
   "server": [],
   "injectors": {
