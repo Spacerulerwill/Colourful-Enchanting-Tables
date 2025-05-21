@@ -2,9 +2,10 @@
   "required": true,
   "minVersion": "0.8",
   "package": "net.spacerulerwill.colourful_enchanting_tables.mixin",
-  "compatibilityLevel": "JAVA_21",
-  "mixins": [
-    "EnchantmentScreenHandlerMixin"
+  "compatibilityLevel": "JAVA_18",
+  "mixins": [],
+  "client": [
+    "BlockEntityTypeMixin"
   ],
   "server": [],
   "injectors": {
