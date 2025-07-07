@@ -1,3 +1,5 @@
+* Ported from **1.2.1-1.21.5-fabric** to **1.2.1-1.21.6-fabric**.
+
 # 1.2.1-1.21.5-fabric - 21/05/25
 
 * Removed static reflection code which could have reduced compatibility with other mods.

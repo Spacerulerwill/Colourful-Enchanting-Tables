@@ -1,3 +1,5 @@
+* Ported from **1.2.1-1.21.5-neoforge** to **1.2.1-1.21.6-neoforge**.
+
 # 1.2.1-1.21.5-neoforge - 21/05/25
 
 Ported from **1.2.1-1.21.5-fabric** to **1.2.1-1.21.5-neoforge**.

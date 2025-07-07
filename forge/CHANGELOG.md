@@ -1,3 +1,5 @@
+* Ported from **1.2.1-1.21.5-forge** to **1.2.1-1.21.6-forge**.
+
 # 1.2.1-1.21.5-forge - 21/05/25
 
 Ported from **1.2.1-1.21.5-fabric** to **1.2.1-1.21.5-forge**.

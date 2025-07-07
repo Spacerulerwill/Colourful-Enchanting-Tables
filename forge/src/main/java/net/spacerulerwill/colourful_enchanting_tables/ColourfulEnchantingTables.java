@@ -4,17 +4,19 @@ import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.eventbus.api.listener.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.registries.RegisterEvent;
 
+import java.lang.invoke.MethodHandle;
+import java.lang.invoke.MethodHandles;
 import java.util.List;
 
 @Mod(Constants.MOD_ID)
 public class ColourfulEnchantingTables {
     public ColourfulEnchantingTables(FMLJavaModLoadingContext context) {
-        context.getModEventBus().register(EventHandler.class);
+        context.getModBusGroup().register(MethodHandles.lookup(), EventHandler.class);
     }
 
     private static class EventHandler {
@@ -42,12 +44,6 @@ public class ColourfulEnchantingTables {
                     }
             );
         }
-
-        /*
-        @SubscribeEvent
-        public static void idk(BlockEntityTypeAddBlocksEvent event) {
-            event.modify(BlockEntityType.ENCHANTING_TABLE, Common.registeredEnchantingTables.toArray(new Block[0]));
-        }*/
 
         @SubscribeEvent
         public static void buildContents(BuildCreativeModeTabContentsEvent event) {
