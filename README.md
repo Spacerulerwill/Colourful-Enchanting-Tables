@@ -1,4 +1,4 @@
-# Colourful Enchanting Tables (1.21.5)
+# Colourful Enchanting Tables (1.21.6)
 
 [modrinth]: https://modrinth.com/mod/colourful-enchanting-tables
 
