@@ -1,3 +1,5 @@
+Fixed bug where colourful enchanting tables could not be used on server.
+
 # 1.2.1-1.21.6+-fabric - 15/07/25
 
 * Ported from **1.2.1-1.21.5-fabric** to **1.2.1-1.21.6+-fabric**.
